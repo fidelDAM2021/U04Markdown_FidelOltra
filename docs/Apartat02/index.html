@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Operadors BETWEEN, IS NULL i IN - Web estàtica amb mkdocs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Operadors BETWEEN, IS NULL i IN";
+        var mkdocs_page_input_path = "Apartat02.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Web estàtica amb mkdocs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/index.md">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat01.md">Apartat 01</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat02.md">Apartat 02</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat03.md">Apartat 03</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat04.md">Apartat 04</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/about.md">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Web estàtica amb mkdocs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Operadors BETWEEN, IS NULL i IN</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="operadors-between-is-null-i-in">Operadors BETWEEN, IS NULL i IN</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="operador-between">Operador BETWEEN</h1>
+<p>Podem utilitzar l'operador BETWEEN per comprovar que un valor estiga dins d'un interval. Funciona amb números i amb cadenes.</p>
+<h1 id="operador-between_1">Operador BETWEEN</h1>
+<h3>Exemple</h3>
+
+<p>Si volem mostrar els empleats que cobren entre 500 i 1000 euros, ho podem fer posant dues condicions unides per un AND.</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE empSou &gt;=500 AND empSou &lt;=1000;
+</code></pre>
+<p>L'alternativa és utilitzar l'operador <strong>BETWEEN</strong> per indicar en la condició que volem els valors que estiguen entre dues quantitats:</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE empSou BETWEEN 500 AND 1000;
+</code></pre>
+<h1 id="operador-between_2">Operador BETWEEN</h1>
+<h3>Exemple</h3>
+
+<p>Si, pel contrari, volem llistar els empleats que no cobren entre 500 i 1000 euros, la manera més senzilla de fer-ho és afegir a la condició anterior l'operador NOT, que nega la condició.</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE empSou NOT BETWEEN 500 AND 1000;
+</code></pre>
+<h1 id="operador-in">Operador IN</h1>
+<p>Suposem que volem llistar els empleats que cobren 500, 600, 700, 800 o 900 euros. Ho podem fer posant totes eixes condicions unides per un OR (no s'han de complir totes, en una és suficient):</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE empSou=500 OR empSou=600 OR empSou=700 OR empSou=800 OR empSou=900;
+</code></pre>
+<h1 id="operador-in_1">Operador IN</h1>
+<p>Ara bé, també tenim un operador que ens facilita eixes consultes: <strong>IN</strong>. Amb eixe operador podem preguntar si un valor està en una llista. La mateixa consulta anterior, amb <strong>IN</strong>, seria així:</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE empSou IN (500,600,700,800,900);
+</code></pre>
+<p>Per suposat, també podem negar la condició i mostrar els empleats que no cobren cap d'eixes quantitats:</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE empSou NOT IN (500,600,700,800,900);
+</code></pre>
+<h1 id="columnes-calculades">Columnes calculades</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="columnes-calculades_1">Columnes calculades</h1>
+<p>Entre el <strong>SELECT</strong> i el <strong>FROM</strong> hem de posar els noms de les columnes que voleu veure, però també podem posar altres coses com càlculs o expresions.</p>
+<h1 id="columnes-calculades_2">Columnes calculades</h1>
+<h3>Exemple</h3>
+<p>Un llistat dels empleats que cobren més de 1000€ al mes seria:</p>
+<pre><code class="language-sql">SELECT nomEmp,cognomEmp,souEmp FROM empleats WHERE souEmp &gt; 1000;
+</code></pre>
+<p>Si volem que aparega en el llistat el que cobren a l'any, sempre que se puga calcular no hi ha cap problema. Si sabem que els  empleats cobren 14 pagues a l'any, podem fer un càlcul molt senzill:</p>
+<pre><code class="language-sql">SELECT nomEmp,cognomEmp,souEmp,souEmp*14 FROM empleats WHERE souEmp &gt; 1000;
+</code></pre>
+<p>Així ens mostrarà en la columna <code>souEmp</code> el que cobren al mes, i en la columna <code>souEmp*14</code> el que cobren a l'any.</p>
+<h1 id="ordenar-el-resultat-de-la-consulta">Ordenar el resultat de la consulta</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="ordenar-el-resultat-de-la-consulta_1">Ordenar el resultat de la consulta</h1>
+<p>Per defecte la sentència <strong>SELECT</strong> mostra les files en el mateix ordre que estan guardades en la taula. Si volem veure el llistat ordenat d'una altra manera, ho podem fer afegint la clàusula <strong>ORDER BY</strong>. Podem especificar per quina columna o columnes volem que ordene el llistat, i també si volem que l'ordre siga ascendent (per defecte) o descendent.</p>
+<h1 id="ordenar-el-resultat-de-la-consulta_2">Ordenar el resultat de la consulta</h1>
+<h3>Exemple</h3>
+
+<pre><code class="language-sql">SELECT * FROM empleats;
+</code></pre>
+<p>mostra tots els empleats en l'ordre que estan a la taula.</p>
+<pre><code class="language-sql">SELECT * FROM empleats ORDER BY cognomEmp;
+</code></pre>
+<p>mostra tots els empleats ordenats alfabèticament per cognoms (de l'A a la Z)</p>
+<pre><code class="language-sql">SELECT * FROM empleats ORDER BY cognomEmp DESC;
+</code></pre>
+<p>mostra tots els empleats ordenats alfabèticament per cognoms però en ordre descendent (de la Z a l'A)</p>
+<h1 id="titols-de-les-columnes">Títols de les columnes</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="titols-de-les-columnes_1">Títols de les columnes</h1>
+<p>Si tenim noms de columnes com ara <code>nomEmp</code>, <code>cognomEmp</code>, <code>souEmp</code>, etc., i sobretot si tenim columnes calculades, quan fem el llistat potser voldrem canviar els títols.</p>
+<p>Ho podem fer amb la clàusula <strong>AS</strong> en el <strong>SELECT</strong>.</p>
+<h1 id="titols-de-les-columnes_2">Títols de les columnes</h1>
+<p>Si fem</p>
+<pre><code class="language-sql">SELECT nomEmp, cognomEmp, souEmp FROM empleat;
+</code></pre>
+<p>obtindrem:</p>
+<p><img alt="w:600px" src="../images/u07-01.jpg" /></p>
+<p>Si volem que els noms de les columnes canvien i tinguen més significat, ho podem fer amb la clàusula <strong>AS</strong> posant-li un alias a les columnes que ens interessen. </p>
+<h1 id="titols-de-les-columnes_3">Títols de les columnes</h1>
+<h3>Exemple</h3>
+
+<pre><code class="language-sql">SELECT nomEmp AS `Nom empleat`, cognomEmp AS `Cognoms empleat`, souEmp AS `Sou mensual` FROM empleat;
+</code></pre>
+<p>donaria com a eixida:
+<img alt="w:700px" src="../images/u07-02.jpg" /></p>
+<h1 id="mostrar-valors-unics">Mostrar valors únics</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="mostrar-valors-unics_1">Mostrar valors únics</h1>
+<p>De vegades ens interessa mostrar els valors que hi ha en una columna sense que apareguen valors repetits. Suposem que ens demanen una consulta que mostre quins oficis tenen els nostres empleats. El primer que faríem, segurament, és:</p>
+<pre><code class="language-sql">SELECT ofiEmp FROM empleat;
+</code></pre>
+<p>El resultat seria algo així:
+<img alt="w:200 h:320px left" src="../images/u07-03.jpg" /></p>
+<h1 id="mostrar-valors-unics_2">Mostrar valors únics</h1>
+<p>Com veiem, ens mostra els oficis repetits perquè torna tots els oficis de tots els empleats. Com fer que cada ofici aparega només una vegada? Utilitzant la clàusula <strong>DISTINCT</strong> en la consulta, que fa que no apareguen valors repetits.</p>
+<pre><code class="language-sql">SELECT DISTINCT ofiEmp FROM empleat;
+</code></pre>
+<p>Ara el resultat serà:</p>
+<p><img alt="w:250px" src="../images/u07-04.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Exercici 1</p>
+</div>
+<p>Si en la base de dades <strong>cines</strong> tenim una taula <strong>cine</strong> amb l'estructura:</p>
+<ul>
+<li>codigo (un id del cine)</li>
+<li>nombre (el nom del cine)</li>
+<li>ciudad (el nom de la població on està el cine)</li>
+</ul>
+<p>Com podríem fer una consulta que ens mostre la llista de poblacions on hi ha cine? I si una ciutat té més d'un cine, com podem fer que només aparega una vegada en el llistat?</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

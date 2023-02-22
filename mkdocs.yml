@@ -1,0 +1,13 @@
+site_name: Web estàtica amb mkdocs
+nav:
+  - Home: /md/index.md
+  - Apartat 01: /md/Apartat01.md
+  - Apartat 02: /md/Apartat02.md
+  - Apartat 03: /md/Apartat03.md
+  - Apartat 04: /md/Apartat04.md
+  - About: /md/about.md
+theme: readthedocs
+markdown_extensions: 
+  - admonition
+docs_dir: 'md'
+site_dir: 'docs'

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SQL DDL - Web estàtica amb mkdocs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SQL DDL";
+        var mkdocs_page_input_path = "Apartat01.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Web estàtica amb mkdocs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/index.md">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat01.md">Apartat 01</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat02.md">Apartat 02</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat03.md">Apartat 03</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat04.md">Apartat 04</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/about.md">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Web estàtica amb mkdocs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>SQL DDL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sql-ddl">SQL DDL</h1>
+<!-- _paginate: false -->
+<!-- _header: ''-->
+<!-- _footer: 'IES Jaume II el Just' -->
+<style> h1 {color:blue;}
+h3 {color:green;} 
+table {padding:0px;margin:0px;}
+th {color:white;font-weight:bold;background-color:blue;}
+div.comentari
+{ width:80%;margin:10px auto;border:2px solid red;
+color
+: green; }
+</style>
+
+<p><img alt="bg contain opacity:.7" src="../images/sqlogo.png" /></p>
+<h1 id="sql-dql">SQL DQL</h1>
+<p>Com ja sabeu, <strong>SQL</strong> (<strong><em>structured query language</em></strong>) és el llenguatge que ens permet comunicar-nos, directament o a través d'una aplicació, amb la base de dades. Com hem vist en l'anterior unitat, dins del llenguatge SQL podem trobar diferents subconjunts d'instruccions que formen subseccions de SQL. Entre elles està DQL, que integra totes les instruccions que utilitzem per realitzar consultes sobre la base de dades.</p>
+<h1 id="la-instruccio-select">La instrucció SELECT</h1>
+<p>La instrucció bàsica per fer consultes sobre les dades que tenim a la base de dades s'anomena <strong>SELECT</strong>. La seua sintaxi és:</p>
+<pre><code class="language-sql">SELECT columnes FROM taula WHERE condició;
+</code></pre>
+<p>La clàusula <strong>WHERE</strong> i la condició no són obligatoris, però si no posem cap condició se mostraran totes les files de la taula.</p>
+<h1 id="select-triar-les-columnes">SELECT: triar les columnes</h1>
+<p>No és obligat especificar les columnes que volem veure. Si posem un asterisc (*), la consulta les tornarà totes. Així, una instrucció com:</p>
+<pre><code class="language-sql">SELECT * FROM cine;
+</code></pre>
+<p>Ens mostrarà totes les files amb totes les columnes de cada fila de la taula <strong>cine</strong>.</p>
+<p>Si tenim una taula <strong>empleats</strong> amb la següent estructura:</p>
+<pre><code>idEmp, nomEmp, cognomEmp, souEmp
+</code></pre>
+<p>Podem veure només el nom i els cognoms fent:</p>
+<pre><code class="language-sql">SELECT nomEmp,cognomEmp FROM empleats;
+</code></pre>
+<h1 id="condicions-la-clausula-where">Condicions: la clàusula WHERE</h1>
+<p>No sempre volem veure totes les files de la taula. Per a fer el filtre utilitzem la clàusula <strong>WHERE</strong> i una o més condicions.</p>
+<p>Per exemple</p>
+<pre><code class="language-sql">SELECT * FROM empleats;
+</code></pre>
+<p>ens mostra tota la informació de tots els empleats. Mentre que</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE souEmp &gt; 1000;
+</code></pre>
+<p>mostra només els empleats que cobren més de 1000€ al mes</p>
+<h1 id="condicions-operadors-de-comparacio">Condicions: operadors de comparació</h1>
+<p>En la clàusula <strong>WHERE</strong> podem posar qualsevol expressió que tinga sentit i que se puga avaluar a verdader o fals. Així, podem utilitzar operadors de comparació com </p>
+<table>
+<thead><tr><th>OPERADOR</th><th>SIGNIFICAT</th><th>OPERADOR</th><th>SIGNIFICAT</th></tr></thead>
+<tr><td>></td><td>Major que</td>
+<td><</td><td>Menor que</td></tr>
+<tr><td>>=</td><td>Major o igual que</td>
+<td><=</td><td>Menor o igual que</td></tr>
+<tr><td>=</td><td>Igual que</td>
+<td>!=</td><td>Diferent que</td></tr>
+</table>
+
+<h3>Exemples:</h3>
+
+<pre><code class="language-sql">...WHERE souEmp &gt;= 1000;
+...WHERE souEmp !=800;
+</code></pre>
+<h1 id="condicions-operador-like">Condicions: operador LIKE</h1>
+<p>També tenim un operador específic de SQL que s'anomena <strong>LIKE</strong> i que ens permet preguntar si una columna conté un valor (no si és igual, sino si el conté).</p>
+<p>Per exemple, si fem:</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE nomEmp=&quot;Jose&quot;;
+</code></pre>
+<p>només obtindrem empleats amb el nom <strong>Jose</strong>. Ara bé, si fem</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE nomEmp LIKE &quot;%Jose%&quot;;
+</code></pre>
+<p>apareixeran també els empleats amb noms com "Jose Antonio", "Maria José", "José Luis", etc.</p>
+<h1 id="condicions-operador-like_1">Condicions: operador LIKE</h1>
+<p>El caràcter % fa de comodí de 0,1 o més digits. També podem utilitzar el guió baix ("_") per fer de comodí de només un digit. </p>
+<h3>Exemple:</h3>
+
+<p>Per llistar tots els empleats que el seu nom comence per F:</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE nomEmp LIKE &quot;F%&quot;;
+</code></pre>
+<p>Ara no posem el % del principi, perquè si el posem ens mostrarà tots els noms que continguen la lletra "F", no només els que comencen per "F".</p>
+<h1 id="condicions-operador-like_2">Condicions: operador LIKE</h1>
+<h3>Exemple:</h3>
+
+<p>Per buscar tots els empleats que el nom comence per S i acabe per Z i a més el cognom tinga 8 lletres, en lloc de fer</p>
+<pre><code class="language-sql">WHERE cognomEmp LIKE &quot;F%Z&quot;
+</code></pre>
+<p>que ens tornaria tots els empleats que els cognoms comencen per F i acaben en Z, hauríem de fer</p>
+<pre><code class="language-sql">WHERE cognomEmp LIKE &quot;F______Z&quot;
+</code></pre>
+<p>(amb 6 guions baixos) que ens tornarà els empleats que el seu cognom comence per F, acabe en Z i entre mig de la F i la Z tinguen exactament 6 caràcters.</p>
+<h1 id="operadors-logics">Operadors lògics</h1>
+<p>Podem utilitzar els operadors lògics per preguntar per 2 o més condicions en el mateix WHERE, o també per preguntar si no se compleix una condició. Els operadors lògics, com sabreu, són:</p>
+<table><thead><th>OPERADOR</th><th>SIGNIFICAT</th>
+<tr><td>AND</td><td>I lògic. Si separem dues condicions amb **AND** s'han de complir les dues|</td></tr>
+<tr><td>OR</td><td>O lògic. Si separem dues condicions amb **OR** només en que una siga certa el total ja és cert</td></tr>
+<tr><td>NOT</td><td>Negació. Nega la condició que ve després</td></tr></table>
+
+<h1 id="operadors-logics_1">Operadors lògics</h1>
+<p>Per exemple, volem llistar els empleats que el nom comence per "F" i que els cognoms continguen la lletra "z". </p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE nomEmp LIKE &quot;F%&quot; AND cognomEmp LIKE &quot;%z%&quot;;
+</code></pre>
+<p>Volem llistar els empleats que no tinguen la lletra "z" en els cognoms:</p>
+<pre><code class="language-sql">SELECT * FROM empleats WHERE cognomEmp NOT LIKE &quot;%z%&quot;;
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

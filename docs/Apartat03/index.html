@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Funcions d'agrupament - Web estàtica amb mkdocs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Funcions d\u0027agrupament";
+        var mkdocs_page_input_path = "Apartat03.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Web estàtica amb mkdocs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/index.md">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat01.md">Apartat 01</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat02.md">Apartat 02</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat03.md">Apartat 03</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat04.md">Apartat 04</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/about.md">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Web estàtica amb mkdocs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Funcions d'agrupament</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="funcions-dagrupament">Funcions d'agrupament</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="funcions-dagrupament_1">Funcions d'agrupament</h1>
+<p>Ja sabem com fer, per exemple, un llistat de lo que cobren els empleats. Amb</p>
+<pre><code class="language-sql">SELECT souEmp FROM empleats;
+</code></pre>
+<p>mostraríem el sou de tots els empleats, i amb</p>
+<pre><code class="language-sql">SELECT DISTINCT souEmp FROM empleats;
+</code></pre>
+<p>fem que cada sou, encara que diferents empleats cobren el mateix, només aparega una vegada.</p>
+<h1 id="funcions-dagrupament_2">Funcions d'agrupament</h1>
+<p>I com fer, per exemple, que ens mostre el sou major de tots? I el més baixet? I el sou mig de tots els empleats?</p>
+<p>Per fer eixe tipus de càlculs que no afecten a una fila sino a vàries files, però que han de tornar un valor únic (no un per fila), hem d'utilitzar les <strong>funcions d'agrupament</strong>.</p>
+<h1 id="funcions-dagrupament_3">Funcions d'agrupament</h1>
+<p>Les principals funcions d'agrupament són:</p>
+<table><thead><th>FUNCIÓ</th><th>Utilitat</th></thead>
+<tr><td>MAX</td><td>Torna el màxim de la columna o expressió indicada</td></tr>
+<tr>
+<tr><td>MIN</td><td>Torna el mínim de la columna o expressió indicada</td></tr>
+<tr><td>SUM</td><td>Torna la suma total de la columna o expressió indicada</td></tr>
+<tr><td>AVG</td><td>Torna la mitja de la columna o expressió indicada</td></tr>
+<tr><td>COUNT</td><td>Torna la quantitat de vegades que apareix el valor o expressió indicada</td></tr></table>
+
+<h1 id="funcions-dagrupament_4">Funcions d'agrupament</h1>
+<h3>Exemple</h3>
+
+<p>Quin és el sou més alt que se paga als nostres empleats?</p>
+<pre><code class="language-sql">SELECT MAX(souEmp) FROM empleats;
+</code></pre>
+<p>I si volem que el mateix llistat mostre també el sou més baixet?</p>
+<pre><code class="language-sql">SELECT MAX(souEmp) AS &quot;Sou màxim&quot;, MIN(souEmp) AS &quot;Sou mínim&quot; FROM empleats;
+</code></pre>
+<h1 id="funcions-dagrupament_5">Funcions d'agrupament</h1>
+<p>Podem combinar les funcions d'agrupament amb qualsevol condició. Quin és el sou més alt que se paga als pintors?</p>
+<pre><code class="language-sql">SELECT MAX(souEmp) AS &quot;Sou màxim pintors&quot; FROM empleats WHERE ofiEmp=&quot;Pintor&quot;;
+</code></pre>
+<p>Quin és el sou mig dels conserges?</p>
+<pre><code class="language-sql">SELECT AVG(souEmp) AS &quot;Sou mig conserges&quot; FROM empleats WHERE ofiEmp=&quot;Conserge&quot;;
+</code></pre>
+<p>Quants fontaners tenim en la taula d'empleats?</p>
+<pre><code class="language-sql">SELECT COUNT(*) AS &quot;Fontaners&quot; FROM empleats WHERE ofiEmp=&quot;Fontaner&quot;;
+</code></pre>
+<h1 id="funcions-dagrupament_6">Funcions d'agrupament</h1>
+<p>Com hem vist, si no anem a comptar res especial, només files, posem <code>COUNT(*)</code>.</p>
+<p>De vegades sí que voldrem comptar alguna cosa específica. Per exemple, quants oficis diferents hi ha a la taula d'empleats?</p>
+<p>Per llistar els oficis distints que hi ha a la taula fem:</p>
+<pre><code class="language-sql">SELECT DISTINCT ofiEmp FROM empleats;
+</code></pre>
+<p>Per comptar-los, podem fer:</p>
+<pre><code class="language-sql">SELECT COUNT(DISTINCT ofiEmp) FROM empleats;
+</code></pre>
+<h1 id="altres-funcions">Altres funcions</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="altres-funcions_1">Altres funcions</h1>
+<p>En SQL disposem també de moltes altres funcions que podem utilitzar en les nostres consultes. Algunes d'elles són:</p>
+<table><thead><th>FUNCIÓ</th><th>UTILITAT</th></thead>
+<tr><td>ABS(x)</td><td>Torna el valor absolut d'una quantitat</td></tr>
+<tr><td>CEIL(x)</td><td>Arredoneix un número per dalt</td></tr>
+<tr><td>CHAR_LENGTH(x)/LENGTH(x)</td><td>Torna quans caràcters té la cadena x</td></tr>
+<tr><td>CONCAT(x,y)</td><td>Concatena les cadenes x i y</td></tr>
+<tr><td>CURDATE()</td><td>Torna la data actual</td></tr>
+<tr><td>CURTIME()</td><td>Torna l'hora actual</td></tr>
+<tr><td>DATE_ADD(data,interval)</td><td>Suma un interval a una data</td></tr>
+<tr><td>DATE_FORMAT(data,format)</td><td>Li dona format a una data</td></tr>
+<tr><td>DATEDIFF(data1,data2)</td><td>Torna la diferència entre dues dates</td></tr>
+<tr><td>DAYNAME(data)</td><td>Torna el nom del dia de la semana d'una data</td></tr>
+<tr><td>DAYOFMONTH(data)</td><td>Torna el dia del mes d'una data</td></tr>
+<tr><td>DAYOFWEEK(data)</td><td>Torna el número del dia de la setmana d'una data</td></tr>
+<tr><td>DAYOFYEAR(data)</td><td>Torna el número del dia de l'any d'una data</td></tr>
+<tr><td>DIV(x,y)</td><td>Torna la divisió entera entre x i y</td></tr>
+<tr><td>FLOOR(x)</td><td>Arredoneix un número per dalt</td></tr>
+<tr><td>FORMAT(x,decimals)</td><td>Torna un número formatat al número de decimals indicat</td></tr>
+<tr><td>IF(condició,valor1,valor2)</td><td>Torna un valor en funció de si la condició és verdadera o falsa</td></tr>
+<tr><td>IFNULL(x,y)</td><td>Torna x si no és null, i torna y si x és null</td></tr>
+<tr><td>LOWER(cadena)</td><td>Converteix la cadena a minúscules</td></tr>
+<tr><td>MOD(x,y)</td><td>Calcula el resto de la divisió entre x i y</td></tr>
+<tr><td>MONTH(data)</td><td>Torna el número del mes d'una data</td></tr>
+<tr><td>MONTHNAME(data)</td><td>Torna el nom del mes d'una data</td></tr>
+<tr><td>POW(x,y)</td><td>Torna el valor de x elevat a y</td></tr>
+<tr><td>RAND()</td><td>Torna un número aleatori</td></tr>
+<tr><td>REGEXP</td><td>Avalua si una cadena compleix un patró</td></tr>
+<tr><td>REVERSE(cadena)</td><td>Torna la cadena al revés</td></tr>
+<tr><td>SQRT(x)</td><td>Torna l'arrel quadrada de x</td></tr>
+<tr><td>STRCMP(x,y)</td><td>Compara dues cadenes</td></tr>
+<tr><td>SUBSTR()</td><td>Torna una part d'una cadena</td></tr>
+<tr><td>TRIM(x)</td><td>Elimina els espais inicials i finals d'una cadena</td></tr>
+<tr><td>UPPER(cadena)</td><td>Converteix la cadena a majúscules</td></tr>
+<tr><td>WEEK(data)</td><td>Torna la setmana de la data</td></tr>
+<tr><td>YEAR(data)</td><td>Torna l'any de la data</td></tr>
+</table>
+
+<p>Hi ha moltes més funcions que podeu trobar a la documentació de MariaDB.</p>
+<p><a href="https://mariadb.com/kb/en/built-in-functions/">Funcions SQL integrades en MariaDB</a></p>
+<h1 id="json-i-mariadb">JSON i MariaDB</h1>
+<p><img alt="bg contain opacity:.1" src="../images/sqlogo.png" /></p>
+<p>Des de 2016 l'estándar SQL deixa guardar en les taules informació en format JSON. Per tant, també han aparegut funcions per treballar amb objectes de tipus JSON.</p>
+<p>Pots veure les funcions de MariaDB per treballar amb informació en format JSON en el següent enllaç:</p>
+<p><a href="https://mariadb.com/kb/en/json-functions/">Funcions JSON en MariaDB</a></p>
+<div class="admonition note">
+<p class="admonition-title">Exercici 2</p>
+</div>
+<p>Si en la base de dades <strong>cines</strong> tenim una taula <strong>cine</strong> amb l'estructura:</p>
+<ul>
+<li>codigo (un id del cine)</li>
+<li>nombre (el nom del cine)</li>
+<li>ciudad (el nom de la població on està el cine)</li>
+</ul>
+<p>Com podem comptar quants cines hi ha en la taula?</p>
+<p>Com podem comptar quantes ciutats hi ha que tinguen cine?</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

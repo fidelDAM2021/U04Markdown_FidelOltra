@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>La clàusula GROUP BY - Web estàtica amb mkdocs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "La cl\u00e0usula GROUP BY";
+        var mkdocs_page_input_path = "Apartat04.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Web estàtica amb mkdocs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/index.md">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat01.md">Apartat 01</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat02.md">Apartat 02</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat03.md">Apartat 03</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/Apartat04.md">Apartat 04</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="/md/about.md">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Web estàtica amb mkdocs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>La clàusula GROUP BY</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="la-clausula-group-by">La clàusula GROUP BY</h1>
+<p><img alt="bg contain opacity:.4" src="../images/sqlogo.png" /></p>
+<h1 id="la-clausula-group-by_1">La clàusula GROUP BY</h1>
+<p>Amb la clàusula <strong>GROUP BY</strong> podem agrupar les files pel valor de determinada columna, i les funcions d'agrupament se calcularan per a cada grup i no per a totes les files de la taula.</p>
+<h1 id="la-clausula-group-by_2">La clàusula GROUP BY</h1>
+<h3>Exemple</h3>
+
+<p>En la base de dades de cines tenim la taula <strong>sala</strong> amb l'estructura:</p>
+<ul>
+<li>codigo (identificador del cine)</li>
+<li>lletra (identificador de la sala)</li>
+<li>butaques (quantitat de butaques de la sala)</li>
+</ul>
+<p>Suposem que volem saber quantes butaques hi ha, en total, en el cine 1. Farem:</p>
+<pre><code class="language-sql">SELECT SUM(butaques) FROM sala WHERE codigo=1;
+</code></pre>
+<p>I si volem saber quantes butaques hi ha en el cine 2:</p>
+<pre><code class="language-sql">SELECT SUM(butaques) FROM sala WHERE codigo=2;
+</code></pre>
+<h1 id="la-clausula-group-by_3">La clàusula GROUP BY</h1>
+<p>I així, cine per cine. Però si tenim molts cines, i volem saber quantes butaques en total hi ha en cada cine, hi ha alguna manera de fer-ho que no siga anar sumant-les un a un? Sí, utilitzant la clàusula <strong>GROUP BY</strong> per a que primer agrupe les sales per cine, i després sume les butaques per cada cine.</p>
+<pre><code class="language-sql">SELECT codigo, SUM(butaques) FROM sala GROUP BY codigo;
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Exercici 3</p>
+</div>
+<p>Fes una consulta que mostre els números de cine i, al costat, quantes sales té cada cine.</p>
+<h1 id="la-clausula-having-amb-group-by">La clàusula HAVING amb GROUP BY</h1>
+<p>De vegades volem fer una consulta amb <strong>GROUP BY</strong> però que no mostre tots els grups, sino només els grups que compleixen una condició.</p>
+<div class="admonition warning">
+<p class="admonition-title">Compte!</p>
+</div>
+<p>Hem de diferenciar entre una consulta que primer agafe les files que compleixen una condició i després les agrupe (la condició aniria en el WHERE abans del GROUP BY) i una consulta que després d'agrupar mostre els grups que compleixen una condició (la condició del grup anirà amb HAVING després del GROUP BY)</div></p>
+<h1 id="la-clausula-having-amb-group-by_1">La clàusula HAVING amb GROUP BY</h1>
+<h3>Exemple</h3>
+
+<p>Per exemple, recordem que la consulta</p>
+<pre><code class="language-sql">SELECT codigo, SUM(butaques) FROM sala GROUP BY codigo;
+</code></pre>
+<p>mostraba els números de cine, i al costat quantes butaques hi havia en total en cada cine. I si volem mostrar només els cines que tinguen més de 200 butaques en total?</p>
+<h1 id="la-clausula-having-amb-group-by_2">La clàusula HAVING amb GROUP BY</h1>
+<p>Seria un error fer:</p>
+<pre><code class="language-sql">SELECT codigo, SUM(butaques) WHERE butaques &gt; 200 FROM sala GROUP BY codigo;
+</code></pre>
+<p>perquè com la condició està en el <strong>WHERE</strong>, per tant només agafará les sales que tinguen més de 200 butaques. Nosaltres no volem això, volem saber quantes butaques tenen tots els cines, i <strong>després</strong> mostrar només els cines que tinguen més de 200 butaques <strong>entre totes les sales</strong>. Lo correcte és:</p>
+<pre><code class="language-sql">SELECT codigo, SUM(butaques) FROM sala GROUP BY codigo HAVING SUM(butaques)&gt;200;
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Exercici 4</p>
+</div>
+<p>Fes una consulta que mostre els números de cine i, al costat, quantes sales té cada cine però que no mostre els cines que tinguen només una sala. </p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
